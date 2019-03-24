@@ -1,0 +1,25 @@
+
+<script>
+ans = '';
+
+function func(num){
+    
+    t1 = num%10;
+    t2 = num - t1;
+    t3 = t2/10;
+    
+    ans += ''+t1;
+    
+    if(t2!==0){
+      func(t3);
+    }else{
+      console.log(ans);
+    }
+    
+    // console.log(t3);
+    
+}
+
+func(7891);
+
+</script>
