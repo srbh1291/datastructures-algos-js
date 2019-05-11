@@ -1,0 +1,36 @@
+
+var arr=[1,2,5,2,8,1,5];
+var groupArr = [];
+var sumArr = [];
+
+maxSubarraySum(arr,4);
+
+function maxSubarraySum(arr,group){
+   var i = 0;
+   var j = 0;
+   var k = 0;
+   var arrLen = arr.length - (group-1);
+  // console.log(arr);return;
+    
+    for(i;i<arrLen;i++) {
+     
+     groupArr.push(arr[i]);
+     
+     j = i+1;
+     k = j+(group-1);
+     
+       for(j;j<k;j++){ 
+          groupArr.push(arr[j])
+       }
+       
+       
+       sumArr.push(groupArr.reduce(function(acc, val) { return acc + val; },0))
+       
+       groupArr = []
+     
+     
+    }
+  
+    console.log(Math.max(...sumArr));
+
+}
