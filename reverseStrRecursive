@@ -1,0 +1,11 @@
+newstr = '';
+function revRecursive(str){
+    newstr = newstr + str[str.length-1];
+
+    return str.length===1?newstr:revRecursive(str.slice(0,-1))
+
+}
+
+res = revRecursive('tomy');
+
+console.log(res);
