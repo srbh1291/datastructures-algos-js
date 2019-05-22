@@ -1,0 +1,11 @@
+var newstr = '';
+function recUW(str){
+                 
+            newstr += str[0]; 
+            return str.length===1?newstr.toUpperCase():recUW(str.slice(1));
+             
+}
+
+resp = recUW('rocky');
+
+console.log(resp);
