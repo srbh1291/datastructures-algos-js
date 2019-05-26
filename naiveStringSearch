@@ -1,0 +1,31 @@
+function returnCount(){
+  
+    let str = 'robdownjdimdownjoy';
+    let src = 'dim';
+    let count = 0;
+
+    for(let i=0;i<str.length;i++){
+     
+      if(str[i]===src[0]){	
+        var match='';
+
+        for(var j=i;j<(i+src.length);j++){
+          match+=str[j];
+        }
+        
+        if(match===src){
+          count++;
+          i=j;
+        }
+
+      }
+
+        
+    }
+
+	return count;
+}
+
+resp = returnCount();
+
+console.log(resp);
