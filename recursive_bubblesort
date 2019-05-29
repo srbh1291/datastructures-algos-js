@@ -1,0 +1,32 @@
+let newarr = [];
+
+function bs(arr){
+
+  if(arr.length===1){
+    newarr.push(arr[0])
+     //console.log(arr)
+    //console.log(newarr)
+    return newarr.reverse();
+  } else if(arr.length>1){
+   for(let j=0;j<arr.length;j++){
+    
+    let temp = 0;
+	
+    if(arr[j]>arr[j+1]){
+		temp=arr[j+1];
+		arr[j+1] = arr[j]
+		arr[j]=temp;
+    }
+   
+   }
+    
+    newarr.push(arr[arr.length-1])
+    return bs(arr.slice(0,-1))
+      
+  }
+  
+  
+}
+
+let resp = bs([4,9,2,6,5]);
+console.log(resp);
