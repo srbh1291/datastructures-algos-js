@@ -1,0 +1,26 @@
+function insSort(arr){
+  
+  let resArr = [];
+  
+  resArr.push(arr[0]);
+  
+  for(let i=1;i<arr.length;i++){
+   
+    for(let j=0;j<resArr.length;j++){
+          
+        if(arr[i]<resArr[j]){
+          resArr.splice(j,0,arr[i]);
+          break;
+        }
+    
+    }
+    
+    
+  }
+  
+  return resArr;
+  
+}
+
+resp = insSort([5,3,4,1,2]);
+console.log(resp);
