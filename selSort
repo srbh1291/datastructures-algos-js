@@ -8,7 +8,7 @@ function selSort(arr){
       }  
     }
     
-    let minpos = arr.indexOf(min)
+    let minpos = arr.lastIndexOf(min) // Incase there are duplicates values
   
     if(arr[i]>min){
       let temp = arr[minpos];
