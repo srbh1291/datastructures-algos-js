@@ -1,0 +1,25 @@
+
+function selSort(arr){
+  for(var i = 0; i < arr.length ; i++){
+    let min=arr[i];
+    for(var j = i+1 ; j < arr.length ; j++){
+      if(arr[j] < min){
+        min = arr[j];        
+      }  
+    }
+    
+    let minpos = arr.indexOf(min)
+  
+    if(arr[i]>min){
+      let temp = arr[minpos];
+      arr[minpos] = arr[i];
+      arr[i] = temp;
+    }   
+    
+  }
+  
+  return arr;
+}
+
+resp = selSort([5,2,8,12,24,3,15]);
+console.log(resp);
