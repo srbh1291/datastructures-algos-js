@@ -1,0 +1,25 @@
+ let arr1 = [2,6,17,24];
+ let arr2 = [4,10,13,20];
+
+let resarr = [];
+
+let k=0;
+
+for(let i=0;i<arr1.length;i++){
+
+  for(let j=k;j<arr2.length;j++){
+  
+    if(arr1[i]<arr2[j]){
+      resarr.push(arr1[i]);
+      k=j;
+      break;
+    } else if(arr1[i]>arr2[j]){
+      resarr.push(arr2[j]);
+      k=j;
+    }
+  
+  }
+  
+}
+
+console.log(resarr);
