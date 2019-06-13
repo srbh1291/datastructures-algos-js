@@ -1,0 +1,74 @@
+function radixSort(arr,place){
+
+	if(place===0){
+		return arr.map(x=>parseInt(x));
+	}
+
+	let arr0 = [];
+	let arr1 = [];
+	let arr2 = [];
+	let arr3 = [];
+	let arr4 = [];
+	let arr5 = [];
+	let arr6 = [];
+	let arr7 = [];
+	let arr8 = [];
+	let arr9 = [];
+
+	for(let i=0;i<arr.length;i++){
+		arr[i] = arr[i].toString();
+
+		if(arr[i].length<place){
+			arr[i] = arr[i].padStart(place,'0');
+		}
+
+
+		switch (parseInt(arr[i][place-1])) {
+			case 0:
+				arr0.push(arr[i]);
+			break;
+			case 1:
+				arr1.push(arr[i]);
+			break;
+			case 2:
+				arr2.push(arr[i]);
+			break;
+			case 3:
+				arr3.push(arr[i]);
+			break;
+			case 4:
+				arr4.push(arr[i]);
+			break;
+			case 5:
+				arr5.push(arr[i]);
+			break;
+			case 6:
+				arr6.push(arr[i]);
+			break;
+			case 7:
+				arr7.push(arr[i]);
+			break;
+			case 8:
+				arr8.push(arr[i]);
+			break;
+			case 9:
+				arr9.push(arr[i]);
+		}
+	
+	}
+
+
+	let newarr = [...arr0,...arr1,...arr2,...arr3,...arr4,...arr5,...arr6,...arr7,...arr8,...arr9];
+
+	place--;
+
+	return radixSort(newarr,place);
+
+}
+
+	let arrtopass = [3221,1,10,9680,577,9420,7,5622,4793,2030,3138,82,2599,743,4127];
+	let pass = Math.max(...arrtopass).toString().length;
+
+	let resp = radixSort(arrtopass,pass);
+
+	console.log(resp);
