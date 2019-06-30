@@ -1,0 +1,87 @@
+<script>
+
+	class Node{
+		constructor(val){
+
+			this.val = val;
+			this.next = null;
+
+		}
+	}
+
+
+	class LinkedList {
+
+		constructor(){
+			this.head = null;
+			this.tail = null;
+			this.pointer = null;
+			this.length = 0;
+		}
+
+		pushVals(val){
+			let node = new Node(val);
+			if(!this.head){
+				this.head = node;
+				this.tail = node;
+			}else{
+				this.tail.next = node;
+				this.tail = this.tail.next;
+			}
+			this.length++;
+
+			return this;
+		}
+
+		popVals(){
+
+			if(!this.head){ 
+				return 'Invalid LL';
+			} else {
+				let i=0;
+				
+				// console.log(this.length);
+				// console.log(this.head.next);
+				// console.log(this.tail);
+				var t1;
+				var t2;
+				var pointer = this.head;
+				
+				while(i<this.length-1){
+					t1 = pointer;
+					pointer = t1.next;
+					// console.log(t1);
+					// console.log(pointer);
+					i++;
+				}
+				
+				var poppedVal = pointer.val;
+				this.tail = t1;
+				if(this.tail!=undefined) this.tail.next = null;
+
+			}
+
+				this.length--;
+
+				return poppedVal;
+
+		}
+
+		
+
+	}
+
+	const ll = new LinkedList();
+	ll.pushVals('Yuvi');
+	ll.pushVals('Dhoni');
+	ll.pushVals('Kohli');
+	// ll.pushVals('Benny');
+	// ll.pushVals('Tony');
+
+	ll.popVals();
+	ll.popVals();
+	console.log(ll.popVals());
+
+	console.log(ll);
+
+</script>
