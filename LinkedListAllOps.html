@@ -1,0 +1,201 @@
+<script>
+
+	class Node{
+		constructor(val){
+
+			this.val = val;
+			this.next = null;
+
+		}
+	}
+
+
+	class LinkedList {
+
+		constructor(){
+			this.head = null;
+			this.tail = null;
+			this.length = 0;
+		}
+
+		pushVals(val){
+			let node = new Node(val);
+			if(!this.head){
+				this.head = node;
+				this.tail = node;
+			}else{
+				this.tail.next = node;
+				this.tail = this.tail.next;
+			}
+			this.length++;
+
+			return this;
+		}
+
+		popVals(){
+
+			if(!this.head){ 
+				return 'Invalid LL';
+			} else {
+				let i=0;
+				
+				// console.log(this.length);
+				// console.log(this.head.next);
+				// console.log(this.tail);
+				var t1;
+				var t2;
+				var pointer = this.head;
+				
+				while(i<this.length-1){
+					t1 = pointer;
+					pointer = t1.next;
+					// console.log(t1);
+					// console.log(pointer);
+					i++;
+				}
+				
+				var poppedVal = pointer.val;
+				this.tail = t1;
+				if(this.tail!=undefined) this.tail.next = null;
+
+			}
+
+				this.length--;
+
+				return poppedVal;
+
+		}
+
+		shift(){
+			if(!this.head) {
+				return undefined
+			}else{
+				var oldHead = this.head;
+				this.head = oldHead.next;
+				this.length--;
+
+				if(this.length === 0){
+					this.tail = null;
+				}
+				return oldHead;				
+			}
+				
+		}
+
+		unshift(val){
+			var newHead = new Node(val);
+
+			if(!this.head) {
+				this.head = newHead;
+				this.tail = this.head;
+			} else {
+				newHead.next = this.head;
+				this.head = newHead;
+			}
+			
+			this.length++;
+			return this;
+		}
+
+		//getter method
+		getNode(idx){
+			let i = 0;
+			
+			var t1;
+			var pointer = this.head;
+			
+			while(i<idx) {
+				t1 = pointer;
+				pointer = t1.next;
+				i++;
+			}
+
+			return pointer;
+		
+		}
+
+		//setter method
+		setNode(idx,value){
+
+			var pointer = this.getNode(idx);
+			pointer.val = value;
+
+		}
+
+		insertNode(idx,value){
+
+			let newNode = new Node(value);
+
+			var prevNode = this.getNode(idx-1);
+			var nextNode = this.getNode(idx);
+
+			console.log(prevNode,nextNode);
+
+			prevNode.next = newNode;
+			newNode.next = nextNode;
+
+			this.length++;
+			
+		}
+
+		removeNode(idx){
+			
+			var currNode = this.getNode(idx);
+			var prevNode = this.getNode(idx-1);
+			var nextNode = this.getNode(idx+1);
+
+			currNode.pop();
+
+			prevNode.next = nextNode;
+
+			this.length--;
+
+		}
+
+		reverseList(){
+
+			var curr = this.head;
+			var nextNode = null;
+			var prevNode = null;
+			
+			this.head = this.tail;
+			this.tail = curr;
+
+			// console.log(curr,this.head,this.tail);return;
+
+			while(curr!=null){
+				nextNode = curr.next; // next -> this.head.next
+				curr.next = prevNode;
+				prevNode = curr;
+				curr = nextNode;
+			}
+
+			return this;
+
+		}
+
+	}
+
+	const ll = new LinkedList();
+	ll.pushVals('Yuvi');
+	ll.pushVals('Dhoni');
+	ll.pushVals('Kohli');
+	ll.pushVals('Benny');
+
+	// ll.unshift('Ronaldo');
+	// ll.unshift('Fabregas');
+
+	// ll.getNode(3)
+
+	// ll.setNode(3,'Harry Kane')
+
+	// ll.insertNode(2,'Cricket');
+	// ll.insertNode(3,'Football');
+
+	// ll.removeNode(3);
+
+	ll.reverseList();
+
+	console.log(ll);
+
+</script>
