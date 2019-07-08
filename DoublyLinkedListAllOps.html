@@ -1,0 +1,124 @@
+<script>
+
+	class Node{
+		constructor(val){
+
+			this.val = val;
+			this.next = null;
+            this.prev = null;
+
+		}
+	}
+
+
+	class DoublyLinkedList {
+
+		constructor(){
+			this.head = null;
+			this.tail = null;
+			this.length = 0;
+		}
+
+		pushVals(val){
+         let node = new Node(val); 
+
+         if(!this.head){
+          this.head = node;
+          this.tail = this.head;
+         } else {
+            // this.head.next = new Node(val);
+            this.tail.next = node;
+            node.prev = this.tail;
+            this.tail = this.tail.next;             
+         }
+         
+         this.length++;
+
+         return this;
+
+        }
+
+        pop(){
+
+            let poppedNode = this.tail;
+            let newTail = this.tail.prev;
+            this.tail = newTail;
+            this.tail.next = null;
+            poppedNode.prev = null;
+            
+            this.length--;
+
+            return poppedNode;
+
+        }
+
+        unshift(val){
+
+            let newNode = new Node(val);
+            let oldNode = this.head;
+            
+            oldNode.prev = newNode;
+            this.head = newNode;
+            this.head.next = oldNode;
+
+            this.length++;
+
+            return this;
+
+        }
+
+        getNode(idx){
+            
+            let mid = Math.floor(this.length/2);
+            let pointer = null;
+            let temp = null;
+            let i = 0;
+
+            // console.log(mid);
+          
+            if(idx<=mid){
+
+                pointer = this.head;
+
+                while(i!=idx) {
+                    temp = pointer;
+                    pointer = temp.next;
+                    i++;
+                }
+
+                return pointer;
+
+            } else if(idx>mid) {
+
+                pointer = this.tail;
+                
+                i = this.length - 1;
+                mid = mid + 1;
+
+                while(i!=idx) {
+                    temp = pointer;
+                    pointer = temp.prev;
+                    i--;
+                }
+
+                return pointer;
+
+            }
+
+        }
+
+	}
+
+	const dll = new DoublyLinkedList();
+    dll.pushVals('Ronaldo');
+    dll.pushVals('Messi');
+    dll.pushVals('Bale');
+    dll.pushVals('Henry');
+    dll.pushVals('Eminem');
+    dll.pushVals('Hitler');
+    dll.pushVals('Babaji');
+    dll.pushVals('Tolstoy');
+
+    console.log(dll);
+
+</script>
