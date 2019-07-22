@@ -174,12 +174,43 @@
 
 		}
 
+		getCircular(start){
+			let i=0,j=0;
+
+			let secondHead = this.head;
+			let pointer = this.head;
+			let pointer2 = secondHead;
+
+			while(i<start){
+				let temp1 = pointer.next;
+				pointer = temp1;
+				i++;
+			}
+
+			this.head = pointer;
+			this.tail.next = pointer2;
+
+			while(j<start-1){
+				let temp2 = pointer2.next;
+				pointer2 = temp2;
+				j++;
+			}
+
+
+			this.tail = pointer2;
+			this.tail.next = null;
+
+			return this;
+
+		}
+
 	}
 
 	const ll = new LinkedList();
 	ll.pushVals('Yuvi');
 	ll.pushVals('Dhoni');
 	ll.pushVals('Kohli');
+	ll.pushVals('Chahal');
 	ll.pushVals('Benny');
 
 	// ll.unshift('Ronaldo');
@@ -194,8 +225,11 @@
 
 	// ll.removeNode(3);
 
-	ll.reverseList();
+	// ll.reverseList();
 
-	console.log(ll);
+	let circ = ll.getCircular(3);
+	console.log(circ);
+
+	// console.log(ll);
 
 </script>
