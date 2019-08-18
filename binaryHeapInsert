@@ -1,0 +1,53 @@
+class MaxBinaryHeap {
+    constructor(){
+        this.arr = [];
+    }
+    insert(element){
+        this.arr.push(element);
+        this.bubbleUp();
+    }
+    bubbleUp(){
+       let lastVal = this.arr[this.arr.length-1];
+	let lastIdx = this.arr.length-1;
+	let parIdx = Math.floor((lastIdx - 1)/ 2);
+
+	let parVal = this.arr[parIdx];
+
+	let temp;
+
+
+	while(lastVal>parVal){
+	  
+	  temp = this.arr[lastIdx];
+	  this.arr[lastIdx] = this.arr[parIdx];
+	  this.arr[parIdx] = temp;
+	  
+	  lastIdx = parIdx;
+	  
+	  lastVal = this.arr[lastIdx];
+	  parIdx = Math.floor((lastIdx - 1)/ 2);
+	  
+	  parVal = this.arr[parIdx];
+	  
+	  
+	}
+
+	console.log(this.arr);
+    }
+}
+
+let heap = new MaxBinaryHeap();
+heap.insert(41);
+heap.insert(39);
+heap.insert(33);
+heap.insert(18);
+heap.insert(27);
+heap.insert(12);
+heap.insert(55);
+heap.insert(1);
+heap.insert(99);
+
+console.log(heap)
+
+
+
