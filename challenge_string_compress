@@ -4,12 +4,11 @@ let op='';
 let opc=0;
 
 for(let i=0;i<str.length;i++){
-	
-    console.log(curr+' --- '+str[i]+' --- '+opc);
-	if(curr!==str[i]){
+
+if(curr!==str[i]){
      op+=opc;
      op+=str[i];
-	 curr = str[i];
+     curr = str[i];
      opc=1;
 	}else{
 	 op+=str[i];
