@@ -1,0 +1,20 @@
+// let str = 'aaabbbccc'
+let str = 'abcdee'
+let prevChar = str[0]
+let prevCtr = 1
+
+let op='';
+
+for(let i=1;i<str.length;i++){
+  if(str[i] === prevChar){
+    ++prevCtr;
+  }else{
+    op += prevChar+prevCtr;
+    prevChar = str[i];
+    prevCtr = 1
+  }
+  
+}
+
+op += prevChar+prevCtr;
+console.log(`op...${op}`) // a1b1c1d1e2
